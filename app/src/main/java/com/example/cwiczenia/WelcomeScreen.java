@@ -20,9 +20,7 @@ public class WelcomeScreen extends AppCompatActivity {
         email = findViewById(R.id.email);
         btn_location = findViewById(R.id.location);
         //TODO: ZADANIE 3
-        Intent intent = getIntent();
-        String extraEmail = intent.getStringExtra("email");
-        email.setText(extraEmail);
+        //Intent intent = ...
 
 
 
@@ -31,11 +29,7 @@ public class WelcomeScreen extends AppCompatActivity {
             public void onClick(View v) {
 
         //TODO: ZADANIE 1
-                /*Uri url = Uri.parse("https://www.google.pl/maps/place/Katedra+Telekomunikacji+AGH" +
-                        "/@50.066878,19.9120969,17z/data=!4m8!1m2!2m1!1sagh+B9!3m4!1s0x47165ba468f4f7b3:0x6841cc5eba9179ff" +
-                        "!8m2!3d50.0668633!4d19.9149519");
-                Intent intent = new Intent(Intent.ACTION_VIEW, url);
-                startActivity(intent);*/
+                //Uri url = ...
 
             }
         });

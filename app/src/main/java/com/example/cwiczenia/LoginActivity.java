@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity{
     private Button btn_login;
     private Button btn_zadanie1;
     private ProgressBar loading;
-    private static String URL_LOGIN ="http://192.168.0.38/cwiczenia/login1.php";
+    private static String URL_LOGIN ="http://ip-z-tablicy/cwiczenia/login1.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +78,7 @@ public class LoginActivity extends AppCompatActivity{
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, WelcomeScreen.class);
-                startActivity(intent);
+                //Intent intent ...
 
             }
 
@@ -106,82 +105,26 @@ public class LoginActivity extends AppCompatActivity{
 
 
 
-    //TODO:  ZADANIE 2
+
     private  void Login(final String email, final String password){
         loading.setVisibility(View.VISIBLE);
         btn_login.setVisibility(View.GONE);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            // JSONArray jsonArray = jsonObject.getString("login");
-
-                            if(success.equals("1")){
-
-                                ///for(int i=0; 1<jsonArray.length(); i++) {
-                                //JSONObject object = jsonArray.getJSONObject(i);
-
-                                    /*String name = object.getString("name").trim();
-                                    String email  = object.getString("email").trim();*/
-
-                                String email = jsonObject.getString("email");
+       //TODO: ZADANIE 2
+       //StringRequest stringRequest = ..
 
 
-                                //displaying all paramiters on login screen
-                                Toast.makeText(LoginActivity.this,
-                                        "Success Login. \nHello "
-                                                , Toast.LENGTH_SHORT)
-                                        .show();
-                                Intent intent = new Intent(LoginActivity.this, WelcomeScreen.class);
 
-                                intent.putExtra("email", email);
 
-                                startActivity(intent);
 
-                                loading.setVisibility(View.GONE);
-                                btn_login.setVisibility(View.VISIBLE);
-                                //}
-                            }else{
-                                Toast.makeText(LoginActivity.this,
-                                        "Login Error \nWrong Email or Password"
 
-                                        , Toast.LENGTH_SHORT)
-                                        .show();
-                            }
-                        }catch(JSONException e) {
-                            e.printStackTrace();
-                            loading.setVisibility(View.GONE);
-                            btn_login.setVisibility(View.VISIBLE);
-                            Toast.makeText(LoginActivity.this, "Error JSON "+e.toString(), Toast.LENGTH_SHORT).show();
 
-                        }
+       //{
+       //     @Override
+       //     protected Map..
+       // };
+       //RequestQueue ..
 
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        loading.setVisibility(View.GONE);
-                        btn_login.setVisibility(View.VISIBLE);
-                        Toast.makeText(LoginActivity.this, "Error"+error.toString(), Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("email", email);
-                params.put("password", password);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
 
     }
 
